@@ -48,6 +48,6 @@ public class AimController : MonoBehaviour {
     }
 
     private void AjustCameraFieldOfView() {
-        playerCamera.fieldOfView = unaimedFiledOfView - (progression * aimedFieldOfView);
+        playerCamera.fieldOfView = unaimedFiledOfView - (progression * (unaimedFiledOfView-aimedFieldOfView));
     }
 }

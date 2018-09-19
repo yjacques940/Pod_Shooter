@@ -14,7 +14,7 @@ public class FollowMouse : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Input.GetAxis("Mouse X") != 0) {
-            player.transform.Rotate(0, Input.GetAxis("Mouse X") * 50, 0);
+            player.transform.Rotate(0, Input.GetAxis("Mouse X") * 25, 0);
             
         }
         if (Input.GetAxis("Mouse Y") != 0) {
