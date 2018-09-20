@@ -8,18 +8,22 @@ public class Bullet : MonoBehaviour {
     [SerializeField]float DestroyBulletAfterCollisionTime = 5f;
     [SerializeField] float maxLifeTime = 120f;
     [SerializeField] float bulletForce = 1500;
-    // Use this for initialization
+    [SerializeField] int bulletDamage=5;
+    
     void Start() {
         rigidBody = GetComponent<Rigidbody>();
-        Vector3 ajustedMovement = transform.TransformDirection(Vector3.forward); /* Bouge selon TON axe des X */
+        Vector3 ajustedMovement = transform.TransformDirection(Vector3.forward); 
         rigidBody.AddForce(ajustedMovement * bulletForce);
         Invoke("DetroyBullet", maxLifeTime);
     }
 
-  
+
 
     private void OnCollisionEnter(Collision collision) {
-
+        Damagable damagable = collision.gameObject.GetComponent<Damagable>();
+        if (damagable != null) {
+            damagable.DealDamage(bulletDamage);
+        }
         Invoke("DetroyBullet", DestroyBulletAfterCollisionTime);
     }
 

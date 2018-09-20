@@ -6,6 +6,8 @@ public class ExplodeOnDamage : MonoBehaviour, Damagable {
     
     [SerializeField]float ExplosionRadius = 5;
     [SerializeField] float ExplositionDamage = 1;
+    [SerializeField] GameObject explositionParticle;
+    [SerializeField] GameObject fireParticle;
     // Use this for initialization
     void Start () {
 		
@@ -21,7 +23,8 @@ public class ExplodeOnDamage : MonoBehaviour, Damagable {
     }
 
     private void Explode() {
-        //instatiate particle system
+        Instantiate(fireParticle, gameObject.transform.position, gameObject.transform.rotation);
+        Instantiate(explositionParticle,gameObject.transform.position,gameObject.transform.rotation);
         Destroy(gameObject);
     }
 }
